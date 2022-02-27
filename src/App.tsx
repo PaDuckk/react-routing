@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Account from "./page/Account";
+import Root from "./page/Root";
+import Route from "./route/Route";
+import { useHistoryPush } from "./route/useRouteState";
 
 function App() {
+  const historyPush = useHistoryPush();
+
+  const handleBtnClick = (path: string) => {
+    historyPush(path);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button onClick={() => handleBtnClick("/")}> go Root </button>
+        <button
+          onClick={() => {
+            handleBtnClick("/account");
+          }}
         >
-          Learn React
-        </a>
+          go AccountPage
+        </button>
       </header>
+      <Route path="/">
+        <Root />
+      </Route>
+      <Route path="/account">
+        <Account />
+      </Route>
     </div>
   );
 }
