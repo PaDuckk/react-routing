@@ -1,3 +1,3 @@
 export const historyPush = (path: string) => {
-  window.history.pushState("data to be passed", "Title of the page", path);
+  window.history.pushState({ a: 1 }, "Title of the page", path);
 };

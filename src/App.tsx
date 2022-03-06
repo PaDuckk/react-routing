@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Account from "./page/Account";
 import Root from "./page/Root";
 import Route from "./route/Route";
-import { useHistoryPush } from "./route/useRouteState";
+import { useHistoryPush } from "./route/hooks";
 
 function App() {
   const historyPush = useHistoryPush();
@@ -10,6 +10,8 @@ function App() {
   const handleBtnClick = (path: string) => {
     historyPush(path);
   };
+
+  const [hi, setHi] = useState("a");
 
   return (
     <div className="App">
