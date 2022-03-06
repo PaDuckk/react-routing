@@ -8,8 +8,6 @@ const RouteContext = React.createContext({
 const RouteProvider = ({ children }: { children: React.ReactNode }) => {
   const [tick, setTick] = useState(0);
 
-  useEffect(() => {}, [tick]);
-
   const historyPush = (path: string) => {
     window.history.pushState("data to be passed", "Title of the page", path);
     console.log(path);
